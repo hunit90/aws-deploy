@@ -1,7 +1,7 @@
 import express from "express";
 import {RedisClientType} from "redis";
 
-const LIST_KEY = "messages";
+export const LIST_KEY = "messages";
 
 export type RedisClient = RedisClientType<any, any, any>;
 
