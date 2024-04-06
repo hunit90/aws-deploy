@@ -15,9 +15,11 @@ RUN npm run build
 # Production stage
 FROM node:18 as production
 
-COPY --from=build ./build ./build
-COPY --from=build ./package.json ./package.json
-COPY --from=build ./package-lock.json ./package-lock.json
+WORKDIR /usr/src/my-app
+
+COPY --from=build ./usr/src/my-app/build ./build
+COPY --from=build ./usr/src/my-app/package.json ./package.json
+COPY --from=build ./usr/src/my-app/package-lock.json ./package-lock.json
 
 RUN npm install --only=production
 
